@@ -38,11 +38,8 @@ namespace Scimitar
 	};
 
 	struct [[gnu::packed]] FileRecord {
-		uint32_t file_ptr;
-		uint32_t unused0[1];
-		uint16_t unused1[2];
-		uint32_t unused2[2];
-		uint32_t unused3[10];
+		uint32_t resource_ptr;
+		uint32_t unused0[4];
 	};
 
 	struct [[gnu::packed]] FileDescription {
@@ -130,26 +127,16 @@ int main(int argc, char **argv) {
 	std::cout<<idx_hdr_chunk.unused4[3]<<std::endl;
 
 	for (auto n = 0; n < file_records.size(); ++n) {
+	// for (auto n = 0; n < 3; ++n) {
 		std::cout<<file_descs[n].name<<std::endl;
 		std::cout<<file_descs[n].file_size<<std::endl;
-		std::cout<<file_records[n].file_ptr<<std::endl;
+		std::cout<<file_records[n].resource_ptr<<std::endl;
 		std::cout<<file_descs[n].next_index<<std::endl;
 		std::cout<<file_descs[n].prev_index<<std::endl;
 		std::cout<<file_records[n].unused0[0]<<std::endl;
-		std::cout<<file_records[n].unused1[0]<<std::endl;
-		std::cout<<file_records[n].unused1[1]<<std::endl;
-		std::cout<<file_records[n].unused2[0]<<std::endl;
-		std::cout<<file_records[n].unused2[1]<<std::endl;
-		std::cout<<file_records[n].unused3[0]<<std::endl;
-		std::cout<<file_records[n].unused3[1]<<std::endl;
-		std::cout<<file_records[n].unused3[2]<<std::endl;
-		std::cout<<file_records[n].unused3[3]<<std::endl;
-		std::cout<<file_records[n].unused3[4]<<std::endl;
-		std::cout<<file_records[n].unused3[5]<<std::endl;
-		std::cout<<file_records[n].unused3[6]<<std::endl;
-		std::cout<<file_records[n].unused3[7]<<std::endl;
-		std::cout<<file_records[n].unused3[8]<<std::endl;
-		std::cout<<file_records[n].unused3[9]<<std::endl;
+		std::cout<<file_records[n].unused0[1]<<std::endl;
+		std::cout<<file_records[n].unused0[2]<<std::endl;
+		std::cout<<file_records[n].unused0[3]<<std::endl;
 		std::cout<<file_descs[n].unused0[0]<<std::endl;
 		std::cout<<file_descs[n].unused0[1]<<std::endl;
 		std::cout<<file_descs[n].unused0[2]<<std::endl;
