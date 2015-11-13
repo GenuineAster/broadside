@@ -39,7 +39,8 @@ namespace Scimitar
 
 	struct [[gnu::packed]] FileRecord {
 		uint32_t resource_ptr;
-		uint32_t unused0[4];
+		uint32_t unused0[3];
+		uint32_t resource_size;
 	};
 
 	struct [[gnu::packed]] FileDescription {
@@ -128,15 +129,15 @@ int main(int argc, char **argv) {
 
 	for (auto n = 0; n < file_records.size(); ++n) {
 	// for (auto n = 0; n < 3; ++n) {
-		std::cout<<file_descs[n].name<<std::endl;
-		std::cout<<file_descs[n].file_size<<std::endl;
-		std::cout<<file_records[n].resource_ptr<<std::endl;
-		std::cout<<file_descs[n].next_index<<std::endl;
-		std::cout<<file_descs[n].prev_index<<std::endl;
+		std::cout<<"Name:       "<<file_descs[n].name<<std::endl;
+		std::cout<<"Size:       "<<file_descs[n].file_size<<std::endl;
+		std::cout<<"Ptr:        "<<file_records[n].resource_ptr<<std::endl;
+		std::cout<<"Next index: "<<file_descs[n].next_index<<std::endl;
+		std::cout<<"Prev index: "<<file_descs[n].prev_index<<std::endl;
+		std::cout<<"Size:       "<<file_records[n].resource_size<<std::endl;
 		std::cout<<file_records[n].unused0[0]<<std::endl;
 		std::cout<<file_records[n].unused0[1]<<std::endl;
 		std::cout<<file_records[n].unused0[2]<<std::endl;
-		std::cout<<file_records[n].unused0[3]<<std::endl;
 		std::cout<<file_descs[n].unused0[0]<<std::endl;
 		std::cout<<file_descs[n].unused0[1]<<std::endl;
 		std::cout<<file_descs[n].unused0[2]<<std::endl;
